@@ -6,6 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     public float moveForce = 10.0f;
     public float jumpForce = 10.0f;
+    public float turnSpeed = 50.0f;
 
     private Rigidbody rb;
     private Vector3 startPos;
@@ -32,5 +33,11 @@ public class PlayerController : MonoBehaviour
         {
             rb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
         }
+
+        if (Input.GetKey(KeyCode.Q))
+            transform.Rotate(Vector3.up, -turnSpeed * Time.deltaTime);
+
+        if (Input.GetKey(KeyCode.E))
+            transform.Rotate(Vector3.up, turnSpeed * Time.deltaTime);
     }
 }
