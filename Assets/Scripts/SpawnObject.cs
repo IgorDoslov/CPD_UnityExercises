@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpawnObject : MonoBehaviour
 {
     public GameObject objToSpawn;
-    float spawnInSeconds = 3.0f;
+    public float spawnInSeconds = 2.0f;
     private float spawnCooldown = 0.0f;
     // Start is called before the first frame update
     void Start()
@@ -16,6 +16,7 @@ public class SpawnObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //objToSpawn.SetActive(true);
         spawnCooldown -= Time.deltaTime;
         if (spawnCooldown < 0)
         {

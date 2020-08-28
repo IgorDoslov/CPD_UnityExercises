@@ -63,12 +63,12 @@ public class PlayerCon : MonoBehaviour
                 transform.rotation = Quaternion.LookRotation(playerDirection, Vector3.up);
             }
 
-            if(Input.GetKeyDown(KeyCode.Joystick1Button5))
+            if (/*Input.GetKeyDown(KeyCode.Joystick1Button5)*/Input.GetAxisRaw("RHorizontal") != 0.0f || Input.GetAxisRaw("RVertical") != 0.0)
             {
                 theGun.isFiring = true;
             }
 
-            if (Input.GetKeyUp(KeyCode.Joystick1Button5))
+            if (/*Input.GetKeyUp(KeyCode.Joystick1Button5)*/Input.GetAxisRaw("RHorizontal") == 0.0f && Input.GetAxisRaw("RVertical") == 0.0)
             {
                 theGun.isFiring = false;
             }
