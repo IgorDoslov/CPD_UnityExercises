@@ -15,9 +15,13 @@ public class PlayerCon : MonoBehaviour
     public GunController theGun;
 
     public bool useController;
+
+    private Controls controls;
     // Start is called before the first frame update
     void Start()
     {
+        controls = new Controls();
+        controls.Enable();
         myRB = GetComponent<Rigidbody>();
         mainCamera = FindObjectOfType<Camera>();
     }
@@ -25,7 +29,10 @@ public class PlayerCon : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
+        var dir = controls.Player.Move.ReadValue<Vector2>();
+
+        moveInput = new Vector3(dir.x, 0f, dir.y);
+        //moveInput = new Vector3(Input.GetAxisRaw("Horizontal"), 0.0f, Input.GetAxisRaw("Vertical"));
         moveVelocity = moveInput * moveSpeed;
 
         // Rotate with mouse
